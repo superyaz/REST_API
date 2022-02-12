@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon --exec npx babel-node src/index.js"
-    },
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/superyaz/REST_API.git"
@@ -18,7 +18,9 @@
   },
   "homepage": "https://github.com/superyaz/REST_API#readme",
   "dependencies": {
-    "express": "^4.17.2"
+    "dotenv": "^16.0.0",
+    "express": "^4.17.2",
+    "mongoose": "^6.2.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.17.0",

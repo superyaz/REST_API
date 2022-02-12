@@ -2,6 +2,8 @@
  * importo las dependencias
  */
 import app from './app'
+import './database'
+
 
 
 /**
