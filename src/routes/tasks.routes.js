@@ -9,8 +9,9 @@ const router = Router()
 /**
  * Declaración de rutas para mi servidor
  */
-router.get('/', (req, res) => {
-    res.send('Hola care verga')
+router.get('/', async (req, res) => {
+    const tasks = await Task.find()
+    res.json(tasks)
 })
 
 router.post('/', async (req, res) => {
