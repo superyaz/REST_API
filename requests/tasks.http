@@ -7,11 +7,24 @@ POST http://localhost:3000/api/tasks
 Content-Type: application/json
 
 {
-"title":"R4Soft",
-"description":"Trabajo freelance"
+"title":"Yazin",
+"description":"Trabajo freelance",
+"done": true
 }
 
 ###
-GET http://localhost:3000/api/tasks/620dcd3b4de746206432427d
+GET http://localhost:3000/api/tasks/620e45d354f5873b368f6960
 
-// Minuto 55:40 
+###
+DELETE http://localhost:3000/api/tasks/6207aea166c0724afcc7fb90 HTTP/1.1
+
+###
+GET http://localhost:3000/api/tasks/done
+
+###
+PUT http://localhost:3000/api/tasks/620e45d354f5873b368f6960
+Content-Type: application/json
+
+{
+    "title":"Crear un sitio web en wix"
+}

@@ -8,7 +8,12 @@ import * as taskCtrl from '../controllers/task.controller'
 const router = Router()
 router.post('/', taskCtrl.createTask);
 router.get('/', taskCtrl.findAllTask);
+router.get('/done', taskCtrl.findAllDoneTask);
 router.get('/:id', taskCtrl.findOnetask);
+router.delete('/:id', taskCtrl.deleteTask);
+router.put('/:id', taskCtrl.updateTask);
+
+
 
 
 
