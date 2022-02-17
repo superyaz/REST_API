@@ -8,7 +8,10 @@ Content-Type: application/json
 
 {
 "title":"R4Soft",
-"description":"Empresa de software para todos los programadores juniors"
+"description":"Trabajo freelance"
 }
+
+###
+GET http://localhost:3000/api/tasks/620dcd3b4de746206432427d
 
 // Minuto 55:40 
