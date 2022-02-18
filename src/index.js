@@ -9,6 +9,6 @@ import './database'
 /**
  * Inicio el servidor
  */
-app.listen(app.get('port'))
+app.listen(app.get('port'));
 
-console.log('Servidor activo', app.get('port'))
+console.log('Servidor activo', app.get('port'));
