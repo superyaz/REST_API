@@ -1,15 +1,25 @@
 import Task from '../models/Task'
+import { getPagination } from '../libs/getPagination';
 
 export const findAllTask = async (req, res) => {
     try {
-        const tasks = await Task.find();
-        res.json(tasks)
+        const { size, page, title } = req.query;
+        const condition = title ? {
+            title: { $regex: new RegExp(title), $options: "i" }
+        } : {};
+        const { limit, offset } = getPagination(page, size)
+        const data = await Task.paginate(condition, { offset, limit });
+        res.json({
+            totalItems: data.totalDocs,
+            tasks: data.docs,
+            totalPages: data.totalPages,
+            currentPage: data.page - 1
+        });
     } catch (error) {
         res.status(500).json({
             message: error.message || 'Something goes wrong retrieving the task',
         });
     }
-
 }
 
 export const createTask = async (req, res) => {
@@ -48,21 +58,44 @@ export const findOnetask = async (req, res) => {
 }
 
 export const deleteTask = async (req, res) => {
-    await Task.findByIdAndDelete(req.params.id);
-    res.json({
-        message: 'Task were deleted successfully',
-    });
+    const { id } = req.params
+    try {
+        await Task.findByIdAndDelete(req.params.id);
+        res.json({
+            message: 'Task were deleted successfully',
+        });
+    } catch (error) {
+        res.status(500).json({
+            message: `Cannot delete task with id: ${id}`,
+        })
+    }
 };
 
 
 export const findAllDoneTask = async (req, res) => {
-    const tasks = await Task.find({ done: true });
-    res.json(tasks)
+    try {
+        const tasks = await Task.find({ done: true });
+        res.json(tasks)
+    } catch (error) {
+        res.status(500).json({
+            message: `Cannont exist tasks`,
+        })
+    }
+
 }
 
 export const updateTask = async (req, res) => {
-    await Task.findByIdAndUpdate(req.params.id, req.body);
-    res.json({
-        message: 'Task was update Successfully'
-    })
+    try {
+        await Task.findByIdAndUpdate(req.params.id, req.body);
+        res.json({
+            message: 'Task was update Successfully'
+        })
+    } catch (error) {
+        res.status(500).json({
+            message: `Error update task`,
+        })
+    }
+
 }
+
+//Minuto 1:55:46
