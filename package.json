@@ -4,7 +4,9 @@
   "description": "Crear con  Nodejs &amp; Mongodb una REST API más Deploy, Dominio y SSL (usando Clouding.io)",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon --exec npx babel-node src/index.js"
+    "dev": "nodemon --exec npx babel-node src/index.js",
+    "build": "babel src --out-dir dist",
+    "start": "node dist/index.js"
   },
   "repository": {
     "type": "git",
@@ -29,6 +31,7 @@
     "@babel/cli": "^7.17.0",
     "@babel/core": "^7.17.2",
     "@babel/node": "^7.16.8",
+    "@babel/plugin-transform-runtime": "^7.17.0",
     "@babel/preset-env": "^7.16.11",
     "nodemon": "^2.0.15"
   }
